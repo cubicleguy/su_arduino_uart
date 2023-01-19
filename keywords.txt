@@ -1,0 +1,49 @@
+#######################################
+# Syntax Coloring Map For Epson SU
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+UART_EPSON_COM	KEYWORD1
+EPSON_DEV	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+regWrite8	KEYWORD2
+regRead16	KEYWORD2
+sensorInit	KEYWORD2
+sensorStart	KEYWORD2
+sensorStop	KEYWORD2
+sensorSelfTest	KEYWORD2
+sensorHWReset	KEYWORD2
+sensorReset	KEYWORD2
+registerDump	KEYWORD2
+sensorFlashTest	KEYWORD2
+sensorReadBurst	KEYWORD2
+sensorDataPrint KEYWORD2
+sensorHeaderPrint	KEYWORD2
+sensorScaleFactorsPrint	KEYWORD2
+sensorConfigDump	KEYWORD2
+decodeDoutRate	KEYWORD2
+decodeFilterSel	KEYWORD2
+decodeBurstCtrl	KEYWORD2
+waitDataReady	KEYWORD2
+gotoSamplingMode	KEYWORD2
+gotoConfigMode	KEYWORD2
+readN	KEYWORD2
+getProdID	KEYWORD2
+getVersion	KEYWORD2
+getSerialNumber	KEYWORD2
+getDRDY	KEYWORD2
+setUARTAuto	KEYWORD2
+findDelimiter	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
