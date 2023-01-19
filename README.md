@@ -1,7 +1,7 @@
 # Epson Sensing Unit (IMU or Accelerometer) UART Driver for Arduino
 ---------------
 
-This is an example test library for the Epson M-Gxx/M-A352
+This is an example test library for the Epson M-Gxxx/M-A352
 Sensing Units (SU) using the UART interface. 
 It was specifically developed for use with the Arduino Teensy 3.6 
 development board (Teensyduino) and includes example applications that 
