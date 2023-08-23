@@ -10,6 +10,7 @@
     v1.1 - Refactoring
     v1.2 - Remove unsupported IMU models
     v1.3 - Add models G370PDS0, G330PDG0, G366PDG0, refactor
+    v1.4 - Add models G370PG0, G370PDT0
 
     @section LICENSE
 
@@ -28,9 +29,9 @@
        this list of conditions and the following disclaimer in the documentation
        and/or other materials provided with the distribution.
 
-    3. Neither the name of the copyright holder nor the names of its contributors
-       may be used to endorse or promote products derived from this software
-       without specific prior written permission.
+    3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from this
+   software without specific prior written permission.
 
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
     AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -49,20 +50,22 @@
 #define EPSON_DEVICES_H_
 
 // Uncomment the selected IMU/Accel Model connected to the Arduino
-// Then modify the user specific settings in the appropriate xxxx_epson_user_def.h file
+// Then modify the user specific settings in the appropriate
+// xxxx_epson_user_def.h file
 
 /*** IMU ***/
 // #define EPSON_G320
 // #define EPSON_G354
 // #define EPSON_G364PDC0
 // #define EPSON_G364PDCA
-// #define EPSON_V340
 // #define EPSON_G365PDF1
 // #define EPSON_G365PDC1
-#define EPSON_G370PDF1
+// #define EPSON_G370PDF1
 // #define EPSON_G370PDS0
 // #define EPSON_G330PDG0
-// #define EPSON_G366PDG0
+#define EPSON_G366PDG0
+// #define EPSON_G370PDG0
+// #define EPSON_G370PDT0
 /*** ACCEL ***/
 // #define EPSON_A352AD
 
@@ -72,4 +75,4 @@
 #include "imu_epson_M-Gxxx_M-Vxxx.h"
 #endif
 
-#endif //< EPSON_DEVICES_H_
+#endif  //< EPSON_DEVICES_H_

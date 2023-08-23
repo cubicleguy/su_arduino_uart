@@ -19,12 +19,12 @@
   to the Teensy 3.6 header (hardware). The pins are mapped as shown below.
 
   Circuit Pinmapping:
-         Arduino DUE    Teensy 3.6 M-Gseries  M-Vseries
-  --------------------------------------------------------------
-  DRDY:  pin 6          pin 3      pin 13     pin 14         (* DRDY is optional)
-  RX1:   pin-18         pin 0      pin 7      pin 10
-  TX1:   pin-19         pin 1      pin 9      pin 12
-  RST#:  pin-7          pin 2      pin 16     pin 18
+  Host Signal   Arduino DUE     Teensy3.6   M-Gseries       M-Vseries
+  --------------------------------------------------------------------
+  DRDY(optional)pin 6           pin 6       pin 13          pin 14
+  RST#          pin-7           pin 7       pin 16          pin 18
+  TXO           pin-19          pin 1       pin 9 (SIN)     pin 12 (SIN)
+  RXI           pin-18          pin 0       pin 7 (SOUT)    pin 10 (SOUT)
 
 ************************************************************************
 
@@ -69,11 +69,11 @@
 // Epson UART Device Arduino Library Definitions
 #include <uart_epson_common.h>
 
-// Assign DataReady is optional, If DRDY not used set to -1 , Otherwise set to assigned pin
-// Assign RESET to pin on Arduino
+// Assign DataReady is optional, If DRDY not used set to -1 , Otherwise set to
+// assigned pin Assign RESET to pin on Arduino
 const int8_t EPSON_DRDY = -1;
-//const int8_t EPSON_DRDY = 3;
-const int8_t EPSON_RESET = 2; //Teensy pin 2
+// const int8_t EPSON_DRDY = 6; //Teensy 3.6 pin 6
+const int8_t EPSON_RESET = 7;  // Teensy 3.6 pin 7
 
 EPSON_DEV su(EPSON_RESET, EPSON_DRDY);
 
@@ -82,14 +82,16 @@ EPSON_DEV su(EPSON_RESET, EPSON_DRDY);
  *
  *------------------------------------------------------------------------------*/
 void setup() {
-  SerialConsole.begin(250000);   // Setup Serial communications for 250000bps
+  SerialConsole.begin(250000);  // Setup Serial communications for 250000bps
   while (!SerialConsole) {
-    ; // Wait for serial port to connect. Needed for native USB port only
+    ;  // Wait for serial port to connect. Needed for native USB port only
   }
 
-  if (!su.begin()){
-    SerialConsole.println("Error. Can not communicate properly with " EPSON_UNIT_TYPE);
-    while (1);
+  if (!su.begin()) {
+    SerialConsole.println(
+        "Error. Can not communicate properly with " EPSON_UNIT_TYPE);
+    while (1)
+      ;
   }
 
   // Toggle SU Reset Line & wait for reset delay time
@@ -98,7 +100,8 @@ void setup() {
   // Initialize SU with settings
   if (!su.sensorInit(CMD_RATEX, CMD_FILTERX)) {
     SerialConsole.println("Error. Can not initialize " EPSON_UNIT_TYPE);
-    while (1);
+    while (1)
+      ;
   }
   SerialConsole.println(EPSON_UNIT_TYPE " Init Done");
 }
@@ -108,7 +111,6 @@ void setup() {
  *
  *------------------------------------------------------------------------------*/
 void loop() {
-
   uint16_t readData[64];  // Set array large enough to store sensor read burst
   uint32_t sampleCount = 0;
   const uint32_t MAXSAMPLE = 100;
@@ -119,7 +121,8 @@ void loop() {
   // Go to SAMPLING mode
   if (!su.sensorStart()) {
     SerialConsole.println("Error. Sensor not entering Sampling mode");
-    while (1);
+    while (1)
+      ;
   }
 
   su.sensorHeaderPrint();
@@ -129,22 +132,29 @@ void loop() {
     if (su.sensorReadBurst(readData, 64)) {
       // Output formatted to console
       su.sensorDataPrint(readData, sampleCount);
-    }
-    else {
+    } else {
       SerialConsole.println("#Corrupted data detected.");
     }
     sampleCount++;
 
     // If sampleCount reaches limit stop application
     if (sampleCount >= MAXSAMPLE) {
-        if (!su.sensorStop()) {
-          SerialConsole.println("Error. Sensor not entering Sampling mode");
-          while (1);
-        }
+      if (!su.sensorStop()) {
+        SerialConsole.println("Error. Sensor not entering Sampling mode");
+        while (1)
+          ;
+      }
+      // Allow time for pending samples to output
+      delay(500);
+
+      // Clear any left over sensor samples
+      while (SerialEpson.available() > 0) {
+        SerialEpson.read();
+      }
       SerialConsole.println("Done.");
       su.registerDump();
-      while (1); // Stops further execution
+      while (1)
+        ;  // Stops further execution
     }
   }
 }
-
