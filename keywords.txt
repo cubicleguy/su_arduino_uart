@@ -7,7 +7,26 @@
 #######################################
 
 UART_EPSON_COM	KEYWORD1
-EPSON_DEV	KEYWORD1
+EPSON_IMU_UART	KEYWORD1
+ImuProperties	KEYWORD1
+ImuInitOptions	KEYWORD1
+ImuBurstFlag	KEYWORD1
+ImuUnscaledData	KEYWORD1
+ImuScaledData	KEYWORD1
+
+EPSON_ACCL_UART	KEYWORD1
+AcclProperties	KEYWORD1
+AcclInitOptions	KEYWORD1
+AcclBurstFlag	KEYWORD1
+AcclUnscaledData	KEYWORD1
+AcclScaledData	KEYWORD1
+
+EPSON_VIBE_UART	KEYWORD1
+VibeProperties	KEYWORD1
+VibeInitOptions	KEYWORD1
+VibeBurstFlag	KEYWORD1
+VibeUnscaledData	KEYWORD1
+VibeScaledData	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -16,32 +35,35 @@ EPSON_DEV	KEYWORD1
 begin	KEYWORD2
 regWrite8	KEYWORD2
 regRead16	KEYWORD2
-sensorInit	KEYWORD2
+toggleReset	KEYWORD2
+getDRDY	KEYWORD2
+readN	KEYWORD2
+waitDataReady	KEYWORD2
+clearRxBuffer	KEYWORD2
+
+sensorGetBurstLength	KEYWORD2
+sensorScaleFactorsPrint	KEYWORD2
+sensorDecodeDoutRate	KEYWORD2
+sensorDecodeFilterSel	KEYWORD2
+sensorDecodeUpdateRate	KEYWORD2
+sensorConfigPrint	KEYWORD2
+sensorHeaderPrint	KEYWORD2
+sensorDataPrint	KEYWORD2
+sensorGetSensorBurst	KEYWORD2
+sensorInitOptions	KEYWORD2
+sensorModelSelect	KEYWORD2
+sensorModelDetect	KEYWORD2
+sensorRegisterDump	KEYWORD2
 sensorStart	KEYWORD2
 sensorStop	KEYWORD2
 sensorSelfTest	KEYWORD2
-sensorHWReset	KEYWORD2
+sensorSensitivityTest	KEYWORD2
+sensorStructuralResTest	KEYWORD2
 sensorReset	KEYWORD2
-registerDump	KEYWORD2
 sensorFlashTest	KEYWORD2
-sensorReadBurst	KEYWORD2
-sensorDataPrint KEYWORD2
-sensorHeaderPrint	KEYWORD2
-sensorScaleFactorsPrint	KEYWORD2
-sensorConfigDump	KEYWORD2
-decodeDoutRate	KEYWORD2
-decodeFilterSel	KEYWORD2
-decodeBurstCtrl	KEYWORD2
-waitDataReady	KEYWORD2
-gotoSamplingMode	KEYWORD2
-gotoConfigMode	KEYWORD2
-readN	KEYWORD2
-getProdID	KEYWORD2
-getVersion	KEYWORD2
-getSerialNumber	KEYWORD2
-getDRDY	KEYWORD2
-setUARTAuto	KEYWORD2
-findDelimiter	KEYWORD2
+sensorGetProdID	KEYWORD2
+sensorGetVersion	KEYWORD2
+sensorGetSerialNumber	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
