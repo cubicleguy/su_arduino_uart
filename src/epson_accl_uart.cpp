@@ -7,12 +7,13 @@
     @section  HISTORY
 
     v1.0 - First release
+    v1.0.1 - Remove redundant break
 
     @section LICENSE
 
     Software License Agreement (BSD License, see license.txt)
 
-    Copyright (c) 2025 Seiko Epson Corporation.
+    Copyright (c) 2025, 2026 Seiko Epson Corporation.
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
@@ -171,23 +172,17 @@ float EPSON_ACCL_UART::sensorDecodeDoutRate(void) {
   switch (dout_rate) {
     case 2:
       return 1000.0;
-      break;
     case 3:
       return 500.0;
-      break;
     case 4:
       return 200.0;
-      break;
     case 5:
       return 100.0;
-      break;
     case 6:
       return 50.0;
-      break;
     default:
       _consolePort.print("Invalid DOUT_RATE");
       return -1;
-      break;
   }
 }
 
