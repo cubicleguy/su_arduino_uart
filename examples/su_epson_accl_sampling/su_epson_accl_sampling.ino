@@ -28,7 +28,7 @@
 
   Software License Agreement (BSD License, see license.txt)
 
-  Copyright (c) 2025 Seiko Epson Corporation.
+  Copyright (c) 2025, 2026 Seiko Epson Corporation.
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without
@@ -131,6 +131,11 @@ struct AcclScaledData scaled_fields = {};
  *
  *------------------------------------------------------------------------------*/
 void setup() {
+#ifdef ARDUINO_ARCH_SAMD
+  // Arduino Zero or similar to enable floating point support for printing
+  asm(".global _printf_float");
+#endif
+
   // Setup serial console communications
   Serial.begin(921600);
   while (!Serial) {
