@@ -1,6 +1,6 @@
 Software License Agreement (BSD License)
 
-Copyright (c) 2019, 2025 Seiko Epson Corporation
+Copyright (c) 2019, 2026 Seiko Epson Corporation
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

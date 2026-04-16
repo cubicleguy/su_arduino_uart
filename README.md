@@ -160,12 +160,13 @@ the Serial Monitor available in `Tools->Serial Monitor`.
 
 # Change Record:
 
-| Date       | Ver  | Comment                                                                                     |
-| ---------- | ---- | ------------------------------------------------------------------------------------------- |
-| 2019-02-25 | v1.0 | - Initial release                                                                           |
-| 2021-03-30 | v1.1 | - Unite IMU and Accelerometers under common Sensing Units                                   |
-| 2022-07-21 | v1.2 | - Added support to detect corrupt sensor packets and cleanup                                |
-| 2023-01-17 | v1.3 | - Added support G330/G366, and cleanup                                                      |
-| 2023-08-16 | v1.4 | - Added support G370PDG0, G370PDT0, cleanup, minor fixes                                    |
-| 2024-06-17 | v1.5 | - Remove column for "Other Arduinos" in Circuit Pinmapping because it varies based on board |
-| 2025-10-27 | v2.0 | - Major revamp the driver, add support for M-G355QDG0, M-G570PR20, M-A370AD10, M-A342VD10   |
+| Date       | Ver    | Comment                                                                                     |
+| ---------- | ------ | ------------------------------------------------------------------------------------------- |
+| 2019-02-25 | v1.0   | - Initial release                                                                           |
+| 2021-03-30 | v1.1   | - Unite IMU and Accelerometers under common Sensing Units                                   |
+| 2022-07-21 | v1.2   | - Added support to detect corrupt sensor packets and cleanup                                |
+| 2023-01-17 | v1.3   | - Added support G330/G366, and cleanup                                                      |
+| 2023-08-16 | v1.4   | - Added support G370PDG0, G370PDT0, cleanup, minor fixes                                    |
+| 2024-06-17 | v1.5   | - Remove column for "Other Arduinos" in Circuit Pinmapping because it varies based on board |
+| 2025-10-27 | v2.0   | - Major revamp the driver, add support for M-G355QDG0, M-G570PR20, M-A370AD10, M-A342VD10   |
+| 2026-04-11 | v2.0.1 | - Minor patch for Arduino Zero or similar not printing floating point values                |
